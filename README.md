@@ -28,10 +28,12 @@ A open source web app for midjourney AI art generation.
 
 ## Local start
 
-```
+```bash
+npm run dev
+# or
 yarn dev
+# or
+pnpm dev
 ```
 
 ## References
-
-- Cloudinary API: https://cloudinary.com/documentation/transformation_reference

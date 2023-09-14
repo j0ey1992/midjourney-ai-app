@@ -1,29 +1,35 @@
-# Next.js & Cloudinary example app
+# Midjourney AI APP
 
-This example shows how to create an image gallery site using Next.js, [Cloudinary](https://cloudinary.com), and [Tailwind](https://tailwindcss.com).
+A open source web app for midjourney AI art generation.
 
-## Deploy your own
+## Keywords
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or view the demo [here](https://nextconf-images.vercel.app/)
+- Midjourney
+- Midjourney AI
+- Midjourney API
+- Midjourney art
+- Midjourney UI
+- Midjourney App
+- Midjourney App Demo
+- Free Midjourney App
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-cloudinary&project-name=nextjs-image-gallery&repository-name=with-cloudinary&env=NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET,CLOUDINARY_FOLDER&envDescription=API%20Keys%20from%20Cloudinary%20needed%20to%20run%20this%20application.)
+## Todo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [ ] midjourney web UI for general image actions, such as Zoom, Vary, Reroll, Pan, In-Painting, blend, etc
+- [ ] midjourney web UI for advance actions, such as partial redraw, settings, describe, get seed, etc
+- [ ] better UI/UX for non-tech background users
+- [ ] capability of payment gateway integration
+- [ ] multi-language support
 
-## How to use
+## Tech stack
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example::
+- [NextJS](https://nextjs.org/)
+- [Midjourney API](https://www.mymidjourney.ai/)
 
-```bash
- npx create-next-app --example with-cloudinary nextjs-image-gallery
+## Local start
+
 ```
-
-```bash
-yarn create next-app --example with-cloudinary nextjs-image-gallery
-```
-
-```bash
-pnpm create next-app --example with-cloudinary nextjs-image-gallery
+yarn dev
 ```
 
 ## References

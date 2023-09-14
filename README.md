@@ -17,8 +17,10 @@ A open source web app for midjourney AI art generation.
 
 - [ ] midjourney web UI for general image actions, such as Zoom, Vary, Reroll, Pan, In-Painting, blend, etc
 - [ ] midjourney web UI for advance actions, such as partial redraw, settings, describe, get seed, etc
-- [ ] better UI/UX for non-tech background users
+- [ ] user management and auth with Supabase
+- [ ] config Midjourney API keys
 - [ ] capability of payment gateway integration
+- [ ] better UI/UX for non-tech background users
 - [ ] multi-language support
 
 ## Tech stack

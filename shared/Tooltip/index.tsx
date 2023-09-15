@@ -1,20 +1,20 @@
-import { Popover, Transition } from "@headlessui/react";
-import React, { Fragment, useState } from "react";
-import { usePopper } from "react-popper";
+import { Popover, Transition } from "@headlessui/react"
+import React, { Fragment, useState } from "react"
+import { usePopper } from "react-popper"
 
 type TooltopProps = {
-  label: string;
-  tip: React.ReactNode;
-  icon?: React.ReactNode;
-};
+  label: string
+  tip: React.ReactNode
+  icon?: React.ReactNode
+}
 
 export default function Tooltip({ label, tip, icon }: TooltopProps) {
-  const [referenceElement, setReferenceElement] = useState();
-  const [popperElement, setPopperElement] = useState();
-  const { styles, attributes } = usePopper(referenceElement, popperElement);
+  const [referenceElement, setReferenceElement] = useState()
+  const [popperElement, setPopperElement] = useState()
+  const { styles, attributes } = usePopper(referenceElement, popperElement)
 
   return (
-    <span className="inline-block">
+    <div className="inline-block">
       <Popover className="relative z-10">
         {({ open }) => (
           <>
@@ -23,7 +23,7 @@ export default function Tooltip({ label, tip, icon }: TooltopProps) {
               ref={setReferenceElement}
               className={`
                 ${open ? "" : "text-opacity-90"}
-                whitespace-break-spaces text-primary-500 `}
+                whitespace-break-spaces text-indigo-500 `}
             >
               <div className="flex flex-row items-center underline underline-offset-2">
                 <span className="mr-1">{label}</span>
@@ -53,6 +53,6 @@ export default function Tooltip({ label, tip, icon }: TooltopProps) {
           </>
         )}
       </Popover>
-    </span>
-  );
+    </div>
+  )
 }

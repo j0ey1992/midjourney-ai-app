@@ -1,17 +1,17 @@
-import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import { ErrorMessage } from "@hookform/error-message";
-import clsx from "clsx";
-import React, { useEffect, useImperativeHandle, useState } from "react";
-import { get } from "react-hook-form";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline"
+import { ErrorMessage } from "@hookform/error-message"
+import clsx from "clsx"
+import React, { useEffect, useImperativeHandle, useState } from "react"
+import { get } from "react-hook-form"
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  label: string;
-  errors?: Record<string, unknown>;
-  touched?: Record<string, unknown>;
-  name: string;
-  inline?: boolean;
-  rounded?: string;
-};
+  label: string
+  errors?: Record<string, unknown>
+  touched?: Record<string, unknown>
+  name: string
+  inline?: boolean
+  rounded?: string
+}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
@@ -29,23 +29,23 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    const inputRef = React.useRef<HTMLInputElement>(null);
-    const [showPassword, setShowPassword] = useState(false);
-    const [inputType, setInputType] = useState(type);
+    const inputRef = React.useRef<HTMLInputElement>(null)
+    const [showPassword, setShowPassword] = useState(false)
+    const [inputType, setInputType] = useState(type)
 
     useEffect(() => {
       if (type === "password" && showPassword) {
-        setInputType("text");
+        setInputType("text")
       }
 
       if (type === "password" && !showPassword) {
-        setInputType("password");
+        setInputType("password")
       }
-    }, [type, showPassword]);
+    }, [type, showPassword])
 
-    useImperativeHandle(ref, () => inputRef.current!);
+    useImperativeHandle(ref, () => inputRef.current!)
 
-    const hasError = get(errors, name) && get(touched, name);
+    const hasError = get(errors, name) && get(touched, name)
 
     return (
       <div>
@@ -74,7 +74,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               name={name}
               placeholder={inline ? label : placeholder}
               className={clsx(
-                `block h-11 w-full rounded-2xl border-neutral-200 bg-white px-4 py-3 text-sm font-normal focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:ring-primary-600 dark:focus:ring-opacity-25 dark:disabled:bg-neutral-800 ${rounded}`,
+                `block h-11 w-full rounded-2xl border-neutral-200 bg-white px-4 py-3 text-sm font-normal focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:ring-indigo-600 dark:focus:ring-opacity-25 dark:disabled:bg-neutral-800 ${rounded}`,
                 {
                   "border-rose-500 focus:border-rose-500": hasError,
                 }
@@ -107,15 +107,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 <div className="text-xsmall-regular pl-2 pt-1 text-rose-500">
                   <span>{message}</span>
                 </div>
-              );
+              )
             }}
           />
         )}
       </div>
-    );
+    )
   }
-);
+)
 
-Input.displayName = "Input";
+Input.displayName = "Input"
 
-export default Input;
+export default Input

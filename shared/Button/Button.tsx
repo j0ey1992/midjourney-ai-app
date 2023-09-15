@@ -1,21 +1,21 @@
-"use client";
+"use client"
 
-import { twFocusClass } from "@lib/util";
-import Link from "next/link";
-import React, { ButtonHTMLAttributes, FC } from "react";
+import { twFocusClass } from "@lib/util"
+import Link from "next/link"
+import React, { ButtonHTMLAttributes, FC } from "react"
 
 export interface ButtonProps {
-  className?: string;
-  translate?: string;
-  sizeClass?: string;
-  fontSize?: string;
-  loading?: boolean;
-  disabled?: boolean;
-  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
-  href?: string;
-  targetBlank?: boolean;
-  onClick?: () => void;
-  children?: React.ReactNode;
+  className?: string
+  translate?: string
+  sizeClass?: string
+  fontSize?: string
+  loading?: boolean
+  disabled?: boolean
+  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"]
+  href?: string
+  targetBlank?: boolean
+  onClick?: () => void
+  children?: React.ReactNode
 }
 
 const Button: FC<ButtonProps> = ({
@@ -32,14 +32,14 @@ const Button: FC<ButtonProps> = ({
 }) => {
   const CLASSES =
     `nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors ${fontSize} ${sizeClass} ${translate} ${className} ` +
-    twFocusClass(true);
+    twFocusClass(true)
 
   if (href) {
     return (
       <Link href={href} className={`${CLASSES} `} onClick={onClick}>
         {children || `This is Link`}
       </Link>
-    );
+    )
   }
 
   return (
@@ -70,7 +70,7 @@ const Button: FC<ButtonProps> = ({
       )}
       {children || `This is Button`}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

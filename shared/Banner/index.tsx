@@ -1,16 +1,16 @@
-import backgroundLineSvg from "@images/Moon.svg";
-import ButtonPrimary from "@shared/Button/ButtonPrimary";
-import NcImage from "@shared/NcImage/NcImage";
-import Image, { StaticImageData } from "next/image";
-import React, { FC } from "react";
+import backgroundLineSvg from "@images/Moon.svg"
+import ButtonPrimary from "@shared/Button/ButtonPrimary"
+import NcImage from "@shared/NcImage/NcImage"
+import Image, { StaticImageData } from "next/image"
+import { FC } from "react"
 
 export interface SectionPromo2Props {
-  className?: string;
-  image?: string | StaticImageData;
-  headline?: string;
-  description?: string;
-  buttonLabel?: string;
-  buttonLink?: string;
+  className?: string
+  image?: string | StaticImageData
+  headline?: string
+  description?: string
+  buttonLabel?: string
+  buttonLink?: string
 }
 
 const Banner: FC<SectionPromo2Props> = ({
@@ -64,7 +64,7 @@ const Banner: FC<SectionPromo2Props> = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Banner;
+export default Banner

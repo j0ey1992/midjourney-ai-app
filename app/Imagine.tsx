@@ -1,31 +1,29 @@
-"use client";
+"use client"
 
-import {
-  CheckCircleIcon,
-  QuestionMarkCircleIcon,
-} from "@heroicons/react/24/outline";
-import PlaceholderImage from "@images/painting-placeholder.png";
-import { useImagineContext } from "@lib/context/imagine-context";
+import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline"
+import PlaceholderImage from "@images/painting-placeholder.png"
+import { useImagineContext } from "@lib/context/imagine-context"
 
-import Button from "@shared/Button/Button";
-import Tooltip from "@shared/Tooltip";
-import cn from "clsx";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import StepPrompt from "./StepPrompt";
-import Banner from "@shared/Banner";
+import Banner from "@shared/Banner"
+import Button from "@shared/Button/Button"
+import Tooltip from "@shared/Tooltip"
+import { useRouter } from "next/navigation"
+import StepPrompt from "./StepPrompt"
 
 type ImagineProps = {
-  session: any;
-};
+  session: any
+}
+
+const ENABLE_TOKEN_PAYMENT =
+  process.env.NEXT_PUBLIC_ENABLE_TOKEN_PAYMENT === "true"
 
 export default function Imagine({ session }: ImagineProps) {
-  const { aiImage } = useImagineContext();
-  const { push } = useRouter();
+  const { aiImage } = useImagineContext()
+  const { push } = useRouter()
 
   const handleBuyCredit = () => {
-    push("/credits");
-  };
+    push("/credits")
+  }
 
   return (
     <div className="pt-4">
@@ -37,47 +35,49 @@ export default function Imagine({ session }: ImagineProps) {
           <div>
             <StepPrompt session={session} />
 
-            <div className="mb-8 flex flex-col items-center justify-between gap-x-4 px-4 sm:flex-row">
-              <div className="text-sm text-gray-500 dark:text-gray-400">
-                <p>
-                  <span className="font-semibold">Note:</span>
-                  {` Please note that
+            {ENABLE_TOKEN_PAYMENT && (
+              <div className="mb-8 flex flex-col items-center justify-between gap-x-4 px-4 sm:flex-row">
+                <div className="text-sm text-gray-500 dark:text-gray-400">
+                  <div>
+                    <span className="font-semibold">Note:</span>
+                    {` Please note that
                 each A.I. painting generation, upscaling, or variation requires `}
-                  <span className="font-semibold">1</span>
-                  {` credit, which will be
+                    <span className="font-semibold">1</span>
+                    {` credit, which will be
                 deducted from your account upon completion. `}
-                  <Tooltip
-                    label="why this"
-                    icon={<QuestionMarkCircleIcon className="h-4 w-4" />}
-                    tip={
-                      <>
-                        <p>
-                          {`We're committed to providing you with top-notch
+                    <Tooltip
+                      label="why this"
+                      icon={<QuestionMarkCircleIcon className="h-4 w-4" />}
+                      tip={
+                        <>
+                          <p>
+                            {`We're committed to providing you with top-notch
                           AI-generated artwork and image enhancements. To
                           maintain the highest quality and seamless experience,
                           we invest in cutting-edge AI resources and
                           infrastructure, including powerful GPU servers.`}
-                        </p>
-                        <p className="mt-4">
-                          {`Each credit you use helps cover the cost of these
+                          </p>
+                          <p className="mt-4">
+                            {`Each credit you use helps cover the cost of these
                           resources, ensuring that you receive the best possible
                           results. Your support enables us to continue offering
                           innovative, high-quality AI services that bring your
                           creative visions to life. Thank you for being a part
                           of our creative community!`}
-                        </p>
-                      </>
-                    }
-                  />
-                </p>
+                          </p>
+                        </>
+                      }
+                    />
+                  </div>
+                </div>
+                <Button
+                  onClick={handleBuyCredit}
+                  className="mt-3 flex !h-9 w-48 min-w-[128px] items-center justify-center rounded-2xl border border-neutral-200 bg-neutral-200/70 px-4 !text-sm !font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800 sm:ml-3 sm:mt-0"
+                >
+                  Buy Credits
+                </Button>
               </div>
-              <Button
-                onClick={handleBuyCredit}
-                className="mt-3 flex !h-9 w-48 min-w-[128px] items-center justify-center rounded-2xl border border-neutral-200 bg-neutral-200/70 px-4 !text-sm !font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800 sm:ml-3 sm:mt-0"
-              >
-                Buy Credits
-              </Button>
-            </div>
+            )}
           </div>
         </div>
       ) : (
@@ -92,5 +92,5 @@ export default function Imagine({ session }: ImagineProps) {
         </div>
       )}
     </div>
-  );
+  )
 }

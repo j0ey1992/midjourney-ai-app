@@ -1,22 +1,22 @@
-import { PhotoIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import Spinner from "@shared/icon/spinner";
+import { PhotoIcon, XMarkIcon } from "@heroicons/react/24/outline"
+import Spinner from "@shared/icon/spinner"
 
-import axios, { AxiosResponse } from "axios";
-import Image, { StaticImageData } from "next/image";
-import { useState } from "react";
-import Dropzone from "react-dropzone";
+import axios, { AxiosResponse } from "axios"
+import Image, { StaticImageData } from "next/image"
+import { useState } from "react"
+import Dropzone from "react-dropzone"
 
 type ImageDropZoneProps = {
-  image: string | StaticImageData | null;
-  setImage: (url: string | StaticImageData | null) => void;
-  setError: (errorMessage: string | null) => void;
-  error?: string | null;
-  fileLimit?: number;
-  preview?: boolean;
-};
+  image: string | StaticImageData | null
+  setImage: (url: string | StaticImageData | null) => void
+  setError: (errorMessage: string | null) => void
+  error?: string | null
+  fileLimit?: number
+  preview?: boolean
+}
 
 const BASEURL =
-  process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL ?? "http://localhost:9000";
+  process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL ?? "http://localhost:9000"
 
 const ImageDropZone = ({
   image,
@@ -25,19 +25,19 @@ const ImageDropZone = ({
   fileLimit = 10,
   preview = true,
 }: ImageDropZoneProps) => {
-  const [uploading, setUploading] = useState<boolean>(false);
+  const [uploading, setUploading] = useState<boolean>(false)
 
   const handleDrop = async (acceptedFiles: File[]) => {
     if (acceptedFiles.length === 0) {
-      setError("Please select an image first!");
-      return;
+      setError("Please select an image first!")
+      return
     }
 
-    const selectedFile = acceptedFiles[0];
+    const selectedFile = acceptedFiles[0]
 
-    const formData = new FormData();
-    formData.append("image", selectedFile);
-    setUploading(true);
+    const formData = new FormData()
+    formData.append("image", selectedFile)
+    setUploading(true)
     try {
       const response: AxiosResponse = await axios.post(
         `${BASEURL}/store/file/upload`,
@@ -45,24 +45,24 @@ const ImageDropZone = ({
         {
           withCredentials: true,
         }
-      );
+      )
 
       if (response.data.imageUrl) {
-        setImage(response.data.imageUrl);
+        setImage(response.data.imageUrl)
       }
     } catch (error) {
-      console.error("Error uploading image:", error);
+      console.error("Error uploading image:", error)
       // @ts-ignore
-      setError(error?.message || "Error uploading image");
-      setUploading(false);
+      setError(error?.message || "Error uploading image")
+      setUploading(false)
     }
-    setUploading(false);
-  };
+    setUploading(false)
+  }
 
   const handleRemove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    setImage(null);
-  };
+    e.stopPropagation()
+    setImage(null)
+  }
 
   return (
     <Dropzone
@@ -101,7 +101,7 @@ const ImageDropZone = ({
               <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" />
             )}
             <div className="mt-4 flex text-sm leading-6">
-              <label className="relative cursor-pointer rounded-md font-semibold text-primary-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-primary-600 focus-within:ring-offset-2 hover:text-primary-500">
+              <label className="relative cursor-pointer rounded-md font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                 <span>Upload a file</span>
                 <input {...getInputProps()} />
               </label>
@@ -112,7 +112,7 @@ const ImageDropZone = ({
         </div>
       )}
     </Dropzone>
-  );
-};
+  )
+}
 
-export default ImageDropZone;
+export default ImageDropZone

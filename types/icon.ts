@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 
 export type IconProps = {
-  color?: string;
-  size?: string | number;
-} & React.SVGAttributes<SVGElement>;
+  color?: string
+  size?: string | number
+} & React.SVGAttributes<SVGElement>

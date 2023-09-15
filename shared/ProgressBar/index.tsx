@@ -1,14 +1,14 @@
-import cn from "clsx";
-import { FC } from "react";
+import cn from "clsx"
+import { FC } from "react"
 
 type ProgressBarProps = {
-  progress: number;
-  className?: string;
-};
+  progress: number
+  className?: string
+}
 
 const ProgressBar: FC<ProgressBarProps> = ({ progress = 0, className }) => {
   // keep 0 decimal places for progress
-  progress = Math.round(progress);
+  progress = Math.round(progress)
   return (
     <div
       className={cn(
@@ -18,7 +18,7 @@ const ProgressBar: FC<ProgressBarProps> = ({ progress = 0, className }) => {
     >
       <div
         className={cn(
-          "flex rounded-full bg-primary-500 p-0.5 text-xs font-medium leading-none",
+          "flex rounded-full bg-indigo-500 p-0.5 text-xs font-medium leading-none",
           {
             "justify-center": progress === 100,
             "justify-end": progress < 100,
@@ -35,7 +35,7 @@ const ProgressBar: FC<ProgressBarProps> = ({ progress = 0, className }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProgressBar;
+export default ProgressBar

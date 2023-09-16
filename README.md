@@ -21,13 +21,15 @@ A open source web app for midjourney AI art generation.
 
 ## Todo
 
-### General
+### Community Version
 
-- [ ] midjourney web UI for the most general image actions, such as Imagine, Vary, Reroll
+- [x] midjourney web UI for the most general image actions, such as Imagine, Vary, Reroll
 - [ ] midjourney web UI for the advanced actions, such as Zoom, Pan, In-Painting, Blend, etc
 - [ ] midjourney web UI for the advanced actions, such as Partial Redraw, Settings, Describe, Seed, etc
 - [ ] better UI/UX for non-tech background users
 - [ ] multi-language support
+
+### Need more features? Please check out [the Pro version](https://github.com/iamzifei/midjourney-ai-app/tree/Pro), including features such as payment, user management, complete Midjourney features support and more!
 
 ## How to use
 

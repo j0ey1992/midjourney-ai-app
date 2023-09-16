@@ -12,16 +12,28 @@ A open source web app for midjourney AI art generation.
 - Midjourney App
 - Midjourney App Demo
 - Free Midjourney App
+- Open source Midjourney app
+- Open source Midjourney web app
+
+## Demo
+
+![](/doc/demo.gif)
 
 ## Todo
 
-- [ ] midjourney web UI for general image actions, such as Zoom, Vary, Reroll, Pan, In-Painting, blend, etc
-- [ ] midjourney web UI for advance actions, such as partial redraw, settings, describe, get seed, etc
-- [ ] user management and auth with Supabase
-- [ ] config Midjourney API keys
-- [ ] capability of payment gateway integration
+### General
+
+- [ ] midjourney web UI for the most general image actions, such as Imagine, Vary, Reroll
+- [ ] midjourney web UI for the advanced actions, such as Zoom, Pan, In-Painting, Blend, etc
+- [ ] midjourney web UI for the advanced actions, such as Partial Redraw, Settings, Describe, Seed, etc
 - [ ] better UI/UX for non-tech background users
 - [ ] multi-language support
+
+## How to use
+
+- copy the `.env.template` to `.env`, and fill up the values
+- put your [Mymidjourney API Key](https://www.mymidjourney.ai/blog/midjourney-api-request) for the env variable `MIDJOURNEY_API_KEY` in the `.env` file
+- start the app locally or deploy it to online services like [Vercel](https://vercel.com)
 
 ## Tech stack
 
@@ -31,11 +43,18 @@ A open source web app for midjourney AI art generation.
 ## Local start
 
 ```bash
-npm run dev
+npm i && npm run dev
 # or
-yarn dev
+yarn && yarn dev
 # or
-pnpm dev
+pnpm i && pnpm dev
 ```
 
+## Support
+
+[My Telegram Channel](https://t.me/+PYmwNF-6_9s4OTI1)
+
 ## References
+
+- [MyMidjourney API](https://www.mymidjourney.ai/)
+- [MyMidjourney API Docs](https://www.mymidjourney.ai/docs)

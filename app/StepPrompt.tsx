@@ -2,6 +2,7 @@
 
 import { useImagineContext } from "@lib/context/imagine-context"
 import calculateCredits from "@lib/util/calculate-credits"
+import { saveAs } from "file-saver"
 
 import { sleep } from "@lib/util/sleep"
 
@@ -78,12 +79,15 @@ export default function StepPrompt({ session }: { session: any }) {
   }, [session, setRemainingToken, setTotalToken])
 
   const getImagineProgress = async (messageId: string) => {
-    const response = await fetch(`${MJ_ROUTER}/message/${messageId}`, {
-      method: "GET",
+    const response = await fetch(`${MJ_ROUTER}?action=message`, {
+      method: "POST",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        messageId,
+      }),
     })
     const imagine = await response.json()
     if (response.status !== 200) {
@@ -124,7 +128,7 @@ export default function StepPrompt({ session }: { session: any }) {
     if (referenceImage) {
       mjPrompt = `${referenceImage} ${mjPrompt}`
     }
-    const response = await fetch(`${MJ_ROUTER}/imagine`, {
+    const response = await fetch(`${MJ_ROUTER}?action=imagine`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -154,7 +158,7 @@ export default function StepPrompt({ session }: { session: any }) {
   const handleButton = async (button: string) => {
     setError(null)
     let progress = 0
-    const response = await fetch(`${MJ_ROUTER}/button`, {
+    const response = await fetch(`${MJ_ROUTER}?action=button`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -194,6 +198,9 @@ export default function StepPrompt({ session }: { session: any }) {
     if (!upscaled) {
       setUpscaling(true)
       await handleButton(upscale || "U1")
+      setUpscaling(false)
+    } else {
+      saveAs(aiImage, "image.webp")
     }
     if (error) {
       setUpscaling(false)
@@ -590,7 +597,7 @@ export default function StepPrompt({ session }: { session: any }) {
         )}
         <div className="flex-grow" />
         {aiImage && (
-          <div className="mt-2 flex w-full items-end justify-end">
+          <div className="mt-2 flex w-full items-center justify-center">
             <div className="flex flex-col items-center">
               <ButtonPrimary
                 className="my-2 w-auto"
@@ -604,7 +611,9 @@ export default function StepPrompt({ session }: { session: any }) {
                   ? "Upscaling the selected painting"
                   : ENABLE_TOKEN_PAYMENT && remainingToken === 0
                   ? "No enough credit"
-                  : "Preview and Download"}
+                  : upscaled
+                  ? "Download"
+                  : "Upscale"}
               </ButtonPrimary>
             </div>
           </div>

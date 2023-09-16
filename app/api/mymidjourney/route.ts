@@ -1,14 +1,9 @@
+import MyMidjourneyClient from "@lib/mymidjourney/client"
 import { NextRequest, NextResponse } from "next/server"
-import MyMidjourneyClient from "./client"
 
 const client = MyMidjourneyClient()
 
-async function handle(
-  req: NextRequest,
-  { params }: { params: { path: string[] } }
-) {
-  console.log("[Midjourney Route] params ", params)
-
+async function handle(req: NextRequest) {
   // TODO: Add authentication to protect the endpoint
   //   const authResult = auth(req);
   //   if (authResult.error) {
@@ -17,25 +12,27 @@ async function handle(
   //     });
   //   }
 
-  console.log(req)
+  const action = req.nextUrl.searchParams.get("action")
 
-  const command = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll(
-    "/api/mymidjourney/",
-    "/api/v1/midjourney/"
-  )
-
-  console.log(`[MyMidjourney Route] command ${command}`)
+  const mymidjourneyUrl = `/midjourney/${action}`
 
   try {
-    const response = await client.post(command, req.body)
-    return NextResponse.json({ data: response.data })
+    console.log(`calling mymidjourneyUrl: ${mymidjourneyUrl}`)
+    const data = await req.json()
+    const response =
+      action === "message"
+        ? await client.get(`${mymidjourneyUrl}/${data.messageId}`)
+        : await client.post(mymidjourneyUrl, data)
+    return NextResponse.json(response.data)
   } catch (error) {
     const traceId = crypto.randomUUID()
-    console.error(
-      `traceId: ${traceId}, data: ${JSON.stringify(req.body, null, 2)}`,
-      error
+    // console.error(
+    //   `traceId: ${traceId}, data: ${JSON.stringify(req.body, null, 2)}`,
+    //   error
+    // )
+    throw new Error(
+      `mymidjourney request failed, traceId: ${traceId}, error: ${error}`
     )
-    throw new Error(`createImagine failed, traceId: ${traceId}`)
   }
 }
 

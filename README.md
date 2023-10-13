@@ -2,6 +2,8 @@
 
 A open source web app for midjourney AI art generation.
 
+# Deploy to Vercel
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fiamzifei%2Fmidjourney-ai-app&env=NEXT_PUBLIC_SITE_NAME,MIDJOURNEY_API_KEY,NEXT_PUBLIC_MIDJOURNEY_API_URL&envDescription=Environment%20variables%20needed%20for%20the%20free%20version%20deployment&envLink=https%3A%2F%2Fgithub.com%2Fiamzifei%2Fmidjourney-ai-app%2Fblob%2Fmain%2F.env.template)
 
 ## Keywords
